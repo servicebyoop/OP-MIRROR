@@ -1,6 +1,5 @@
+[![OPGOHIL](https://telegra.ph/file/baf682cdb03d51820fa84.png)](https://t.me/opgohil)
 This is a Telegram Bot written in Python for mirroring files on the Internet to your Google Drive or Telegram.
-[![OPGOHIL](https://telegra.ph/file/143032e96542e7534f073.jpg)](https://t.me/opgohil)
-
 # Features:
 
 ## By [OPGOHIL](https://t.me/gujjuopgohil)
