@@ -1,4 +1,4 @@
-This is a Telegram Bot written in Python for mirroring files on the Internet to your Google Drive or Telegram. Based on [python-aria-mirror-bot](https://github.com/lzzy12/python-aria-mirror-bot)
+This is a Telegram Bot written in Python for mirroring files on the Internet to your Google Drive or Telegram. 
 
 # Features:
 
@@ -26,7 +26,7 @@ This is a Telegram Bot written in Python for mirroring files on the Internet to 
 - Docker image support for `linux/amd64, linux/arm64, linux/arm/v7, linux/arm/v6` (**Note**: Use `anasty17/mltb-oracle:latest` for oracle or if u faced problem with arm64 docker run)
 - Update bot at startup and with restart command using `UPSTREAM_REPO`
 - Qbittorrent seed until reaching specific ratio or time
-- Rss feed and filter. Based on this repository [rss-chan](https://github.com/hyPnOtICDo0g/rss-chan)
+- Rss feed and filter. 
 - Save leech settings including thumbnails in database
 - Mirror/Leech multi links/torrent-files with one command. **Note**: This feature will not work for clone, count, tg-files or watch commands
 - Many bugs have been fixed
