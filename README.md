@@ -307,7 +307,7 @@ ping - Ping the Bot ⚙️
 help - All cmds with description ⚙️
 ```
 ------
-#Extras
+## By [OPGOHIL](https://t.me/gujjuopgohil)
 ## Bot commands for admin or useless commands for public chennel
  
 ```
