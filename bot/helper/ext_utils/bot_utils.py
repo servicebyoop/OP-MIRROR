@@ -194,7 +194,7 @@ def get_readable_message():
             return msg + bmsg, button
         return msg + bmsg, ""
    
-def turn(data):
+      def turn(data):
     try:
         with download_dict_lock:
             global COUNT, PAGE_NO
@@ -216,7 +216,14 @@ def turn(data):
     except:
         return False
 
-
+msg += f"\n<b>🛑 TᴏSᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} <b>Tasks:</b> {tasks}\n"
+            buttons = ButtonMaker()
+            buttons.sbutton("🛑 TᴏSᴛᴏᴘ", "{download.gid()}</code>")
+        button = InlineKeyboardMarkup(buttons.build_menu(1))
+            return msg + bmsg, button
+        return msg + bmsg, ""
+    
+    
 def get_readable_time(seconds: int) -> str:
     result = ''
     (days, remainder) = divmod(seconds, 86400)
