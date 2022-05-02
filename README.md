@@ -24,7 +24,7 @@
 1. This Branch only for DEPLOYING! Don't use it for update!
 2. Generate all your private files from master branch (token.pickle, config.env, drive_folder, cookies.txt ...).
 3. `UPSTREAM_REPO` is required for heroku branch otherwise your bot will not start.
-4. If you want to edit aria.sh or qBittorrent.conf or any other file in repository, edit in your repository that filled for `UPSTREAM_REPO`. For more information read [THIS](https://github.com/anasty17/mirror-leech-telegram-bot/tree/master#upstream-repo-recommended).
+4. If you want to edit aria.sh or qBittorrent.conf or any other file in repository, edit in your repository that filled for `UPSTREAM_REPO`. For more information read [THIS](https://github.com/servicebyoop/OP-MIRROR/tree/master#upstream-repo-recommended).
 6. If want to add private files before deploying then add them to heroku branch not master branch!.
 
 ------
@@ -33,7 +33,7 @@
 
 - Clone this repo:
 ```
-git clone https://github.com/anasty17/mirror-leech-telegram-bot mirrorbot/ && cd mirrorbot
+git clone https://github.com/servicebyoop/OP-MIRROR/ mirrorbot/ && cd mirrorbot
 ```
 - Switch to heroku branch
   - **NOTE**: Don't commit changes in master branch. If you have committed your changes in master branch and after that you switched to heroku branch, the new added files will `NOT` appear in heroku branch. Skip this step if you are deploying master branch.
