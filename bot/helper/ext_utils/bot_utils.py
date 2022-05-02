@@ -135,7 +135,6 @@ def get_readable_message():
                 MirrorStatus.STATUS_SPLITTING,
                 MirrorStatus.STATUS_SEEDING,
             ]:
-                msg += f"\n<b>├─🕴️ User :</b> {user_id}
                 msg += f"\n{get_progress_bar_string(download)} {download.progress()}"
                 if download.status() == MirrorStatus.STATUS_CLONING:
                     msg += f"\n<b>├─📱 Cʟᴏɴᴇᴅ:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
@@ -189,8 +188,8 @@ def get_readable_message():
         if STATUS_LIMIT is not None and tasks > STATUS_LIMIT:
             msg += f"<b>Page:</b> {PAGE_NO}/{pages} | <b>Tasks:</b> {tasks}\n"
             buttons = ButtonMaker()
-            buttons.sbutton("⬅️Previous", "status pre")
-            buttons.sbutton("➡️Next", "status nex")
+            buttons.sbutton("⬅️ Previous", "status pre")
+            buttons.sbutton("➡️ Next", "status nex")
             button = InlineKeyboardMarkup(buttons.build_menu(2))
             return msg + bmsg, button
         return msg + bmsg, ""
@@ -216,13 +215,6 @@ def get_readable_message():
         return True
     except:
         return False
-
-msg += f"\n<b>🛑 TᴏSᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} <b>Tasks:</b> {tasks}\n"
-            buttons = ButtonMaker()
-            buttons.sbutton("🛑 TᴏSᴛᴏᴘ", "{download.gid()}</code>")
-        button = InlineKeyboardMarkup(buttons.build_menu(1))
-            return msg + bmsg, button
-        return msg + bmsg, ""
     
     
 def get_readable_time(seconds: int) -> str:
