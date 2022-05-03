@@ -128,9 +128,9 @@ class GoogleDriveHelper:
             LOGGER.info(f"Delete Result: {msg}")
         except HttpError as err:
             if "File not found" in str(err):
-                msg = "No such file exist"
+                msg = "𝐍𝐨 𝐑𝐞𝐬𝐮𝐥𝐭 𝐅𝐨𝐮𝐧𝐝 ❌"
             elif "insufficientFilePermissions" in str(err):
-                msg = "Insufficient File Permissions"
+                msg = "𝐈𝐧𝐬𝐮𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐭 𝐅𝐢𝐥𝐞 𝐏𝐞𝐫𝐦𝐢𝐬𝐬𝐢𝐨𝐧𝐬"
                 token_service = self.__alt_authorize()
                 if token_service is not None:
                     self.__service = token_service
@@ -610,7 +610,7 @@ class GoogleDriveHelper:
                         includeTeamDriveItems=True,
                         q=query,
                         spaces='drive',
-                        pageSize=200,
+                        pageSize=300,
                         fields='files(id, name, mimeType, size)',
                         orderBy='folder, name asc',
                     )
@@ -702,7 +702,7 @@ class GoogleDriveHelper:
         for content in self.telegraph_content:
             self.path.append(
                 telegraph.create_page(
-                    title='Mirror-Leech-Bot Drive Search',
+                    title='💓 𝐨𝐩𝐠𝐨𝐡𝐢𝐥-𝐆𝐝𝐫𝐢𝐯𝐞-𝐌𝐢𝐫𝐫𝐨𝐫𝐛𝐨𝐭',
                     content=content
                 )["path"]
             )
