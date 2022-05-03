@@ -155,6 +155,7 @@ def get_readable_message():
                     pass
                 msg += f"\n<b>╰─🚨 Tᴏ Sᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
+                msg += f"\n<b>├─🕴️ Usᴇʀ:</b>{self.tag}
                 msg += f"\n<b>🪨 Size:</b>{download.size()}"
                 msg += f"\n<b>🏃 Sᴘᴇᴇᴅ:</b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
                 msg += f" | <b>🖥️ Uᴘʟᴏᴀᴅᴇᴅ:</b>{get_readable_file_size(download.torrent_info().uploaded)}"
