@@ -153,6 +153,10 @@ def get_readable_message():
                            f" | <b>🧲 Lᴇᴇᴄʜᴇʀꜱ:</b> {download.torrent_info().num_leechs}"
                 except:
                     pass
+                uname = f"@{self.message.from_user.username}"
+        else:
+            uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
+        msg = f"{uname}
                 msg += f"\n<b>╰─🚨 Tᴏ Sᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>🪨 Size:</b>{download.size()}"
