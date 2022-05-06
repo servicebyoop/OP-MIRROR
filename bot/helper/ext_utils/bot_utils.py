@@ -162,13 +162,14 @@ def get_readable_message():
                 msg += f"\n<b>🪨 Size:</b>{download.size()}"
                 msg += f"\n<b>🏃 Sᴘᴇᴇᴅ:</b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
                 if self.message.from_user.username:
-            uname = f"@{self.message.from_user.username}"
+           self.tag  = f"@{self.message.from_user.username}"
         else:
-            uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
-        msg = f"{uname} sendMessage(msg, self.bot, self.update)"
+            self.tag = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
+        msg = f"{self.tag}"
+        sendMessage(msg, self.bot, self.update)
         
         if count == 0:
-            self.clean()"
+            self.clean()
         else:
             update_all_messages()
                 msg += f" | <b>🖥️ Uᴘʟᴏᴀᴅᴇᴅ:</b>{get_readable_file_size(download.torrent_info().uploaded)}"
