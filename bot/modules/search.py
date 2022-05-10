@@ -56,23 +56,23 @@ def torser(update, context):
     elif len(key) == 1 and SEARCH_API_LINK is None:
         sendMessage("𝐒𝐞𝐧𝐝 𝐚 𝐬𝐞𝐚𝐫𝐜𝐡 𝐤𝐞𝐲 𝐚𝐥𝐨𝐧𝐠 𝐰𝐢𝐭𝐡 𝐜𝐨𝐦𝐦𝐚𝐧𝐝", context.bot, update.message)
     elif len(key) == 1:
-        buttons.sbutton('Trending', f"torser {user_id} apitrend")
-        buttons.sbutton('Recent', f"torser {user_id} apirecent")
-        buttons.sbutton("Cancel", f"torser {user_id} cancel")
+        buttons.sbutton('𝐓𝐫𝐞𝐧𝐝𝐢𝐧𝐠', f"torser {user_id} apitrend")
+        buttons.sbutton('𝐑𝐞𝐜𝐞𝐧𝐭', f"torser {user_id} apirecent")
+        buttons.sbutton("𝐂𝐚𝐧𝐜𝐞𝐥", f"torser {user_id} cancel")
         button = InlineKeyboardMarkup(buttons.build_menu(2))
         sendMarkup("𝐒𝐞𝐧𝐝 𝐚 𝐬𝐞𝐚𝐫𝐜𝐡 𝐤𝐞𝐲 𝐚𝐥𝐨𝐧𝐠 𝐰𝐢𝐭𝐡 𝐜𝐨𝐦𝐦𝐚𝐧𝐝", context.bot, update.message, button)
     elif SEARCH_API_LINK is not None and SEARCH_PLUGINS is not None:
-        buttons.sbutton('Api', f"torser {user_id} apisearch")
-        buttons.sbutton('Plugins', f"torser {user_id} plugin")
-        buttons.sbutton("Cancel", f"torser {user_id} cancel")
+        buttons.sbutton('𝐀𝐩𝐢', f"torser {user_id} apisearch")
+        buttons.sbutton('𝐏𝐥𝐮𝐠𝐢𝐧𝐬', f"torser {user_id} plugin")
+        buttons.sbutton("𝐂𝐚𝐧𝐜𝐞𝐥", f"torser {user_id} cancel")
         button = InlineKeyboardMarkup(buttons.build_menu(2))
-        sendMarkup('Choose tool to search:', context.bot, update.message, button)
+        sendMarkup('𝐂𝐡𝐨𝐨𝐬𝐞 𝐭𝐨𝐨𝐥 𝐭𝐨 𝐬𝐞𝐚𝐫𝐜𝐡:', context.bot, update.message, button)
     elif SEARCH_API_LINK is not None and SEARCH_PLUGINS is None:
         button = _api_buttons(user_id, "apisearch")
-        sendMarkup('Choose site to search:', context.bot, update.message, button)
+        sendMarkup('𝐂𝐡𝐨𝐨𝐬𝐞 𝐬𝐢𝐭𝐞 𝐭𝐨 𝐬𝐞𝐚𝐫𝐜𝐡:', context.bot, update.message, button)
     elif SEARCH_API_LINK is None and SEARCH_PLUGINS is not None:
         button = _plugin_buttons(user_id)
-        sendMarkup('Choose site to search:', context.bot, update.message, button)
+        sendMarkup('𝐂𝐡𝐨𝐨𝐬𝐞 𝐬𝐢𝐭𝐞 𝐭𝐨 𝐬𝐞𝐚𝐫𝐜𝐡:', context.bot, update.message, button)
 
 def torserbut(update, context):
     query = update.callback_query
@@ -86,7 +86,7 @@ def torserbut(update, context):
     data = query.data
     data = data.split(" ")
     if user_id != int(data[1]):
-        query.answer(text="Not Yours!", show_alert=True)
+        query.answer(text="𝐇𝐞𝐲 𝐍𝐨𝐭 𝐘𝐨𝐮𝐫𝐬!", show_alert=True)
     elif data[2].startswith('api'):
         query.answer()
         button = _api_buttons(user_id, data[2])
@@ -148,7 +148,7 @@ def _search(key, site, message, method):
                     msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>"
                 search_results = search_results['data']
             else:
-                return editMessage(f"No result found for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i>", message)
+                return editMessage(f"𝐍𝐨 𝐫𝐞𝐬𝐮𝐥𝐭 𝐟𝐨𝐮𝐧𝐝 𝐟𝐨𝐫 <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i>", message)
         except Exception as e:
             return editMessage(str(e), message)
     else:
