@@ -1,5 +1,6 @@
-# Heroku Deploy
-
+# Heroku Deploy guide 
+# Credit : @opgohil telegram
+ 
 ## How This Branch Works
 
 * We all know most of mirror/leech repository is banned from heroku. What heroku ban exactly ?
