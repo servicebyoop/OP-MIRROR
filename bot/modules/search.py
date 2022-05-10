@@ -90,11 +90,11 @@ def torserbut(update, context):
     elif data[2].startswith('api'):
         query.answer()
         button = _api_buttons(user_id, data[2])
-        editMessage('Choose site:', message, button)
+        editMessage('𝐂𝐡𝐨𝐨𝐬𝐞 𝐬𝐢𝐭𝐞:', message, button)
     elif data[2] == 'plugin':
         query.answer()
         button = _plugin_buttons(user_id)
-        editMessage('Choose site:', message, button)
+        editMessage('𝐂𝐡𝐨𝐨𝐬𝐞 𝐬𝐢𝐭𝐞:', message, button)
     elif data[2] != "cancel":
         query.answer()
         site = data[2]
@@ -107,13 +107,13 @@ def torserbut(update, context):
                     endpoint = 'Recent'
                 editMessage(f"<b>Listing {endpoint} Items...\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
             else:
-                editMessage(f"<b>Please wait It may take 3-4 minutes to find the <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
+                editMessage(f"<b>𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭 𝐈𝐭 𝐦𝐚𝐲 𝐭𝐚𝐤𝐞 𝟑-𝟒 𝐦𝐢𝐧𝐮𝐭𝐞𝐬 𝐭𝐨 𝐟𝐢𝐧𝐝 𝐭𝐡𝐞 <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
         else:
-            editMessage(f"<b>Please wait It may take 3-4 minutes to find the <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>", message)
+            editMessage(f"<b>𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭 𝐈𝐭 𝐦𝐚𝐲 𝐭𝐚𝐤𝐞 𝟑-𝟒 𝐦𝐢𝐧𝐮𝐭𝐞𝐬 𝐭𝐨 𝐟𝐢𝐧𝐝 𝐭𝐡𝐞 <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>", message)
         Thread(target=_search, args=(key, site, message, method)).start()
     else:
         query.answer()
-        editMessage("Search has been canceled!", message)
+        editMessage("𝐎𝐨𝐩𝐬 💻 𝐒𝐞𝐚𝐫𝐜𝐡 𝐡𝐚𝐬 𝐛𝐞𝐞𝐧 𝐜𝐚𝐧𝐜𝐞𝐥𝐞𝐝! ❌", message)
 
 def _search(key, site, message, method):
     if method.startswith('api'):
@@ -168,10 +168,10 @@ def _search(key, site, message, method):
             msg = f"<b>Found {min(total_results, TELEGRAPH_LIMIT)}</b>"
             msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>"
         else:
-            return editMessage(f"No result found for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i>", message)
+            return editMessage(f"𝐍𝐨 𝐫𝐞𝐬𝐮𝐥𝐭 𝐟𝐨𝐮𝐧𝐝 𝐟𝐨𝐫 <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i>", message)
     link = _getResult(search_results, key, message, method)
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("🔎 VIEW", link)
+    buttons.buildbutton("🔎 𝐕𝐈𝐄𝐖", link)
     button = InlineKeyboardMarkup(buttons.build_menu(1))
     editMessage(msg, message, button)
     if not method.startswith('api'):
