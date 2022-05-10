@@ -153,6 +153,7 @@ def get_readable_message():
                 try:
                     msg += f"\n<b>├─🌱 Sᴇᴇᴅᴇʀꜱ:</b> {download.torrent_info().num_seeds}" \
                            f" | <b>🧲 Lᴇᴇᴄʜᴇʀꜱ:</b> {download.torrent_info().num_leechs}"
+                    sendMessage(f"{self.tag}", self.bot, self.message)
                
                 msg += f"\n<b>╰─🚨 Tᴏ Sᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
