@@ -60,7 +60,6 @@ def stats(update, context):
             f'<b>├  📁 ᴍᴇᴍᴏʀʏ ᴛᴏᴛᴀʟ:</b> {mem_t}\n'\
             f'<b>├  ⏳ ᴍᴇᴍᴏʀʏ ғʀᴇᴇ:</b> {mem_a}\n'\
             f'<b>├  📥 ᴍᴇᴍᴏʀʏ ᴜsᴇᴅ:</b> {mem_u}\n'
-            f'<b>│</b>\n' \
             f'<b>╰──《 ☣️ @opgohil ☣️ 》</b>'
     sendMessage(stats, context.bot, update.message)
 
