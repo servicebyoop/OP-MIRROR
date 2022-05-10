@@ -80,7 +80,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         sendMarkup('Dont spam here join below 👇', context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update.message)
+    restart_message = sendMessage("😐Restarting, Please wait❗...", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
     alive.kill()
@@ -102,7 +102,7 @@ def restart(update, context):
 
 def ping(update, context):
     start_time = int(round(time() * 1000))
-    reply = sendMessage("Starting Ping", context.bot, update.message)
+    reply = sendMessage("⛔ Starting Ping", context.bot, update.message)
     end_time = int(round(time() * 1000))
     editMessage(f'{end_time - start_time} ms', reply)
 
@@ -253,7 +253,7 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("😎Restarted successfully❗", chat_id, msg_id)
         osremove(".restartmsg")
     elif AUTHORIZED_CHATS:
         try:
@@ -280,7 +280,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info("Bot Started!")
+    LOGGER.info("💥𝐁𝐨𝐭 𝐒𝐭𝐚𝐫𝐭𝐞𝐝❗")
     signal.signal(signal.SIGINT, exit_clean_up)
     if rss_session is not None:
         rss_session.start()
