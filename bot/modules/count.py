@@ -22,7 +22,8 @@ def countNode(update, context):
         if len(link) == 0:
             link = reply_to.text
         if reply_to.from_user.username:
-            tag = f"@{reply_to.from_user.username}"
+            tag = f"@{reply_to.from_user.username}"replying to the link by command', context.bot, update.message)
+
         else:
             tag = reply_to.from_user.mention_html(reply_to.from_user.first_name)
     if is_gdrive_link(link):
@@ -33,7 +34,7 @@ def countNode(update, context):
         cc = f'\n\n<b>cc: </b>{tag}'
         sendMessage(result + cc, context.bot, update.message)
     else:
-        sendMessage('Send Gdrive link along with command or by replying to the link by command', context.bot, update.message)
+        sendMessage('𝐒𝐞𝐧𝐝 𝐆𝐝𝐫𝐢𝐯𝐞 𝐥𝐢𝐧𝐤 𝐚𝐥𝐨𝐧𝐠 𝐰𝐢𝐭𝐡 𝐜𝐨𝐦𝐦𝐚𝐧𝐝 𝐨𝐫 𝐛𝐲 𝐫𝐞𝐩𝐥𝐲𝐢𝐧𝐠 𝐭𝐨 𝐭𝐡𝐞 𝐥𝐢𝐧𝐤 𝐛𝐲 𝐜𝐨𝐦𝐦𝐚𝐧𝐝', context.bot, update.message)
 
 count_handler = CommandHandler(BotCommands.CountCommand, countNode, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 dispatcher.add_handler(count_handler)
