@@ -1,9 +1,12 @@
 [![OPGOHIL](https://telegra.ph/file/baf682cdb03d51820fa84.png)](https://t.me/opgohil)
+```diff
+- • Work in progress on repo
+```
 ```diff 
 - [ REPO IS UNDER MAINTENANCE / ]
 ```
 ```diff
-- [(The repo will be online soon)]
+- (The repo will be online soon)
 ```
 # Do not deploy your bot using this repo you may receive some errors while deployment
 
