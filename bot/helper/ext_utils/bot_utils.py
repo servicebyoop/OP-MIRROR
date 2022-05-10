@@ -188,10 +188,10 @@ def get_readable_message():
         bmsg += f"\n<b>🌐 Rᴀᴍ:</b> {virtual_memory().percent}% | <b>🧭 Uᴘᴛɪᴍᴇ ::</b> {currentTime}" 
         bmsg += f"\n<b>🔻 DL:</b> {dlspeed}/s | <b>🔺 UL:</b> {upspeed}/s" 
         if STATUS_LIMIT is not None and tasks > STATUS_LIMIT:
-            msg += f"<b>Page:</b> {PAGE_NO}/{pages} | <b>Tasks:</b> {tasks}\n"
+            msg += f"<b>📑 Pᴀɢᴇ:</b> {PAGE_NO}/{pages} | <b>📝 Tᴀꜱᴋꜱ:</b> {tasks}\n"
             buttons = ButtonMaker()
-            buttons.sbutton("⬅️Previous", "status pre")
-            buttons.sbutton("➡️Next", "status nex")
+            buttons.sbutton("⬅️ ᴘʀᴇᴠɪᴏᴜs", "status pre")
+            buttons.sbutton("➡️ ɴᴇxᴛ", "status nex")
             button = InlineKeyboardMarkup(buttons.build_menu(2))
             return msg + bmsg, button
         return msg + bmsg, ""
