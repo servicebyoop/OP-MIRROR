@@ -151,19 +151,7 @@ def get_readable_message():
                 try:
                     msg += f"\n<b>├─🌱 Sᴇᴇᴅᴇʀꜱ:</b> {download.torrent_info().num_seeds}" \
                            f" | <b>🧲 Lᴇᴇᴄʜᴇʀꜱ:</b> {download.torrent_info().num_leechs}"
-                except:
-                    pass
-                if self.message.from_user.username:
-           self.tag  = f"@{self.message.from_user.username}"
-        else:
-            self.tag = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
-        msg = f"{self.tag}"
-        sendMessage(msg, self.bot, self.update)
-        
-        if count == 0:
-            self.clean()
-        else:
-            update_all_messages()
+               
                 msg += f"\n<b>╰─🚨 Tᴏ Sᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>🪨 Size:</b>{download.size()}"
