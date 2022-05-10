@@ -42,16 +42,18 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Version:</b> {botVersion}\n\n'\
-            f'<b>Bot Uptime:</b> {currentTime}\n'\
-            f'<b>OS Uptime:</b> {osUptime}\n\n'\
-            f'<b>Total Disk Space:</b> {total}\n'\
-            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
-            f'<b>Upload:</b> {sent}\n'\
-            f'<b>Download:</b> {recv}\n\n'\
-            f'<b>CPU:</b> {cpuUsage}%\n'\
-            f'<b>RAM:</b> {mem_p}%\n'\
-            f'<b>DISK:</b> {disk}%\n\n'\
+    stats = f'<b>╭──《🌐 Bᴏᴛ Sᴛᴀᴛɪsᴛɪᴄs 🌐》</b>\n' \
+            f'<b>│</b>\n' \
+            f'<b>├《⚙️ 𝐕𝐞𝐫𝐬𝐢𝐨𝐧:</b> {botVersion}\n\n'\
+            f'<b>├  ▶  Rᴜɴɴɪɴɢ Sɪɴᴄᴇ ▶:</b> {currentTime}\n'\
+            f'<b>├  ⛅ 𝐎𝐒 𝐔𝐩𝐭𝐢𝐦𝐞:</b> {osUptime}\n\n'\
+            f'<b>├  💾 Tᴏᴛᴀʟ Dɪsᴋ Sᴘᴀᴄᴇ:</b> {total}\n'\
+            f'<b>├  📀 Tᴏᴛᴀʟ Usᴇᴅ Sᴘᴀᴄᴇ:</b> {used} | <b>Free:</b> {free}\n\n'\
+            f'<b>├  🔼 Tᴏᴛᴀʟ Uᴘʟᴏᴀᴅ:</b> {sent}\n'\
+            f'<b>├  🔽 Tᴏᴛᴀʟ Dᴏᴡɴʟᴏᴀᴅ:</b> {recv}\n\n'\
+            f'<b>├  🖥️ Cᴘᴜ:</b> {cpuUsage}%\n'\
+            f'<b>├  🎮 Rᴀᴍ:</b> {mem_p}%\n'\
+            f'<b>├  💽 Dɪsᴋ:</b> {disk}%\n\n'\
             f'<b>Physical Cores:</b> {p_core}\n'\
             f'<b>Total Cores:</b> {t_core}\n\n'\
             f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
