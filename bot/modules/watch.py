@@ -48,8 +48,9 @@ def _watch(bot, message, isZip=False, isLeech=False):
         args = None
 
     if message.from_user.username:
+
         tag = f"@{message.from_user.username}"
-    else:
+        else:
         tag = message.from_user.mention_html(message.from_user.first_name)
 
     reply_to = message.reply_to_message
@@ -84,18 +85,18 @@ def _watch(bot, message, isZip=False, isLeech=False):
         msg = str(e).replace('<', ' ').replace('>', ' ')
         return sendMessage(tag + " " + msg, bot, message)
     if 'entries' in result:
-        for i in ['144', '240', '360', '480', '720', '1080', '1440', '2160']:
+        for i in ['144', '240', '360', '480', '720', '1080', '1440', '2160', 4320]:
             video_format = f"bv*[height<={i}][ext=mp4]"
             buttons.sbutton(f"{i}-mp4", f"qu {msg_id} {video_format} t")
             video_format = f"bv*[height<={i}][ext=webm]"
             buttons.sbutton(f"{i}-webm", f"qu {msg_id} {video_format} t")
-        buttons.sbutton("Audios", f"qu {msg_id} audio t")
-        buttons.sbutton("Best Videos", f"qu {msg_id} {best_video} t")
-        buttons.sbutton("Best Audios", f"qu {msg_id} {best_audio} t")
-        buttons.sbutton("Cancel", f"qu {msg_id} cancel")
+        buttons.sbutton("𝐀𝐮𝐝𝐢𝐨𝐬", f"qu {msg_id} audio t")
+        buttons.sbutton("𝐁𝐞𝐬𝐭 𝐕𝐢𝐝𝐞𝐨𝐬", f"qu {msg_id} {best_video} t")
+        buttons.sbutton("𝐁𝐞𝐬𝐭 𝐀𝐮𝐝𝐢𝐨𝐬", f"qu {msg_id} {best_audio} t")
+        buttons.sbutton("𝐂𝐚𝐧𝐜𝐞𝐥", f"qu {msg_id} cancel")
         YTBUTTONS = InlineKeyboardMarkup(buttons.build_menu(3))
         listener_dict[msg_id] = [listener, user_id, link, name, YTBUTTONS, args]
-        bmsg = sendMarkup('Choose Playlist Videos Quality:', bot, message, YTBUTTONS)
+        bmsg = sendMarkup('𝐂𝐡𝐨𝐨𝐬𝐞 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 𝐕𝐢𝐝𝐞𝐨𝐬 𝐐𝐮𝐚𝐥𝐢𝐭𝐲:', bot, message, YTBUTTONS)
     else:
         formats = result.get('formats')
         formats_dict = {}
@@ -138,13 +139,13 @@ def _watch(bot, message, isZip=False, isLeech=False):
                     buttons.sbutton(str(buttonName), f"qu {msg_id} {video_format}")
                 else:
                     buttons.sbutton(str(forDict), f"qu {msg_id} dict {forDict}")
-        buttons.sbutton("Audios", f"qu {msg_id} audio")
-        buttons.sbutton("Best Video", f"qu {msg_id} {best_video}")
-        buttons.sbutton("Best Audio", f"qu {msg_id} {best_audio}")
-        buttons.sbutton("Cancel", f"qu {msg_id} cancel")
+        buttons.sbutton("𝐀𝐮𝐝𝐢𝐨𝐬", f"qu {msg_id} audio")
+        buttons.sbutton("𝐁𝐞𝐬𝐭 𝐕𝐢𝐝𝐞𝐨", f"qu {msg_id} {best_video}")
+        buttons.sbutton("𝐁𝐞𝐬𝐭 𝐀𝐮𝐝𝐢𝐨", f"qu {msg_id} {best_audio}")
+        buttons.sbutton("𝐂𝐚𝐧𝐜𝐞𝐥", f"qu {msg_id} cancel")
         YTBUTTONS = InlineKeyboardMarkup(buttons.build_menu(2))
         listener_dict[msg_id] = [listener, user_id, link, name, YTBUTTONS, args, formats_dict]
-        bmsg = sendMarkup('Choose Video Quality:', bot, message, YTBUTTONS)
+        bmsg = sendMarkup('𝐂𝐡𝐨𝐨𝐬𝐞 𝐕𝐢𝐝𝐞𝐨 𝐐𝐮𝐚𝐥𝐢𝐭𝐲:', bot, message, YTBUTTONS)
 
     Thread(target=_auto_cancel, args=(bmsg, msg_id)).start()
 
@@ -176,7 +177,7 @@ def _qual_subbuttons(task_id, qual, msg):
     buttons.sbutton("Back", f"qu {task_id} back")
     buttons.sbutton("Cancel", f"qu {task_id} cancel")
     SUBBUTTONS = InlineKeyboardMarkup(buttons.build_menu(2))
-    editMessage(f"Choose Video Bitrate for <b>{qual}</b>:", msg, SUBBUTTONS)
+    editMessage(f"𝐂𝐡𝐨𝐨𝐬𝐞 𝐕𝐢𝐝𝐞𝐨 𝐁𝐢𝐭𝐫𝐚𝐭𝐞 𝐟𝐨𝐫 <b>{qual}</b>:", msg, SUBBUTTONS)
 
 def _audio_subbuttons(task_id, msg, playlist=False):
     buttons = button_build.ButtonMaker()
@@ -204,17 +205,17 @@ def select_format(update, context):
     try:
         task_info = listener_dict[task_id]
     except:
-        return editMessage("This is old task", msg)
+        return editMessage("𝐓𝐡𝐢𝐬 𝐢𝐬 𝐨𝐥𝐝 𝐭𝐚𝐬𝐤", msg)
     uid = task_info[1]
     if user_id != uid:
-        return query.answer(text="Don't waste your time!", show_alert=True)
+        return query.answer(text="𝐃𝐨𝐧'𝐭 𝐰𝐚𝐬𝐭𝐞 𝐲𝐨𝐮𝐫 𝐭𝐢𝐦𝐞!", show_alert=True)
     elif data[2] == "dict":
         query.answer()
         qual = data[3]
         return _qual_subbuttons(task_id, qual, msg)
     elif data[2] == "back":
         query.answer()
-        return editMessage('Choose Video Quality:', msg, task_info[4])
+        return editMessage('𝐂𝐡𝐨𝐨𝐬𝐞 𝐕𝐢𝐝𝐞𝐨 𝐐𝐮𝐚𝐥𝐢𝐭𝐲:', msg, task_info[4])
     elif data[2] == "audio":
         query.answer()
         if len(data) == 4:
@@ -245,7 +246,7 @@ def _auto_cancel(msg, msg_id):
     sleep(60)
     try:
         del listener_dict[msg_id]
-        editMessage('Timed out! Task has been cancelled.', msg)
+        editMessage('𝐓𝐢𝐦𝐞𝐝 𝐨𝐮𝐭! 𝐓𝐚𝐬𝐤 𝐡𝐚𝐬 𝐛𝐞𝐞𝐧 𝐜𝐚𝐧𝐜𝐞𝐥𝐥𝐞𝐝.', msg)
     except:
         pass
 
