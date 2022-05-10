@@ -85,7 +85,7 @@ def _watch(bot, message, isZip=False, isLeech=False):
         msg = str(e).replace('<', ' ').replace('>', ' ')
         return sendMessage(tag + " " + msg, bot, message)
     if 'entries' in result:
-        for i in ['144', '240', '360', '480', '720', '1080', '1440', '2160', 4320]:
+        for i in ['144', '240', '360', '480', '720', '1080', '1440', '2160', '4320']:
             video_format = f"bv*[height<={i}][ext=mp4]"
             buttons.sbutton(f"{i}-mp4", f"qu {msg_id} {video_format} t")
             video_format = f"bv*[height<={i}][ext=webm]"
@@ -174,8 +174,8 @@ def _qual_subbuttons(task_id, qual, msg):
         size = formats_dict[qual][br]
         buttonName = f"{br}K ({get_readable_file_size(size)})"
         buttons.sbutton(str(buttonName), f"qu {task_id} {video_format}")
-    buttons.sbutton("Back", f"qu {task_id} back")
-    buttons.sbutton("Cancel", f"qu {task_id} cancel")
+    buttons.sbutton("𝐁𝐚𝐜𝐤", f"qu {task_id} back")
+    buttons.sbutton("𝐂𝐚𝐧𝐜𝐞𝐥", f"qu {task_id} cancel")
     SUBBUTTONS = InlineKeyboardMarkup(buttons.build_menu(2))
     editMessage(f"𝐂𝐡𝐨𝐨𝐬𝐞 𝐕𝐢𝐝𝐞𝐨 𝐁𝐢𝐭𝐫𝐚𝐭𝐞 𝐟𝐨𝐫 <b>{qual}</b>:", msg, SUBBUTTONS)
 
@@ -190,10 +190,10 @@ def _audio_subbuttons(task_id, msg, playlist=False):
             i = ''
             audio_format = f"ba/b-{q}"
         buttons.sbutton(f"{q}K-mp3", f"qu {task_id} {audio_format}")
-    buttons.sbutton("Back", f"qu {task_id} back")
-    buttons.sbutton("Cancel", f"qu {task_id} cancel")
+    buttons.sbutton("𝐁𝐚𝐜𝐤", f"qu {task_id} back")
+    buttons.sbutton("𝐂𝐚𝐧𝐜𝐞𝐥", f"qu {task_id} cancel")
     SUBBUTTONS = InlineKeyboardMarkup(buttons.build_menu(2))
-    editMessage(f"Choose Audio{i} Bitrate:", msg, SUBBUTTONS)
+    editMessage(f"𝐂𝐡𝐨𝐨𝐬𝐞 𝐀𝐮𝐝𝐢𝐨{i} Bitrate:", msg, SUBBUTTONS)
 
 def select_format(update, context):
     query = update.callback_query
