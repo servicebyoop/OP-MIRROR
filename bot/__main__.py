@@ -57,9 +57,11 @@ def stats(update, context):
             f'<b>├  〰️ ᴘʜʏsɪᴄᴀʟ ᴄᴏʀᴇs:</b>{p_core}\n'\
             f'<b>├  🧬 ᴛᴏᴛᴀʟ ᴄᴏʀᴇs:</b> {t_core}\n\n'\
             f'<b>├  📼 sᴡᴀᴘ:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
-            f'<b>Memory Total:</b> {mem_t}\n'\
-            f'<b>Memory Free:</b> {mem_a}\n'\
-            f'<b>Memory Used:</b> {mem_u}\n'
+            f'<b>├  📁 ᴍᴇᴍᴏʀʏ ᴛᴏᴛᴀʟ:</b> {mem_t}\n'\
+            f'<b>├  ⏳ ᴍᴇᴍᴏʀʏ ғʀᴇᴇ:</b> {mem_a}\n'\
+            f'<b>├  📥 ᴍᴇᴍᴏʀʏ ᴜsᴇᴅ:</b> {mem_u}\n'
+            f'<b>│</b>\n' \
+            f'<b>╰──《 ☣️ @opgohil ☣️ 》</b>'
     sendMessage(stats, context.bot, update.message)
 
 
