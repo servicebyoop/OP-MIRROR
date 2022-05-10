@@ -290,7 +290,7 @@ def racaty(url: str) -> str:
 
 def fichier(link: str) -> str:
     """ 1Fichier direct link generator
-    Based on https://github.com/Maujar
+    Based on https://github.com/servicebyoop/OP-MIRROR
     """
     regex = r"^([http:\/\/|https:\/\/]+)?.*1fichier\.com\/\?.+"
     gan = re.match(regex, link)
