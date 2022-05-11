@@ -59,8 +59,8 @@ def stats(update, context):
             f'<b>├  📼 sᴡᴀᴘ:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
             f'<b>├  📁 ᴍᴇᴍᴏʀʏ ᴛᴏᴛᴀʟ:</b> {mem_t}\n'\
             f'<b>├  ⏳ ᴍᴇᴍᴏʀʏ ғʀᴇᴇ:</b> {mem_a}\n'\
-            f'<b>├  📥 ᴍᴇᴍᴏʀʏ ᴜsᴇᴅ:</b> {mem_u}\n'
-            f'<b>╰──《 ☣️ @opgohil ☣️ 》</b>'
+            f'<b>╰─ 📥 ᴍᴇᴍᴏʀʏ ᴜsᴇᴅ:</b> {mem_u}\n'
+            
     sendMessage(stats, context.bot, update.message)
 
 
