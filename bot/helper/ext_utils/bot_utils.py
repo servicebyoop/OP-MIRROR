@@ -8,7 +8,6 @@ from requests import head as rhead
 from urllib.request import urlopen
 from telegram import InlineKeyboardMarkup
 
-from bot.helper.telegram_helper.message_utils import sendMessage, sendMarkup, delete_all_messages, update_all_messages
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot import download_dict, download_dict_lock, STATUS_LIMIT, botStartTime, DOWNLOAD_DIR
 from bot.helper.telegram_helper.button_build import ButtonMaker
@@ -35,19 +34,6 @@ class MirrorStatus:
     STATUS_SEEDING = "Seeding...🌧"
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-
-
-class MirrorListener:
-    def __init__(self, bot, message, isZip=False, extract=False, isQbit=False, isLeech=False, pswd=None, tag=None):
-        self.bot = bot
-        self.message = message
-        self.uid = self.message.message_id
-        self.extract = extract
-        self.isZip = isZip
-        self.isQbit = isQbit
-        self.isLeech = isLeech
-        self.pswd = pswd
-        self.tag = tag
 
 
 class setInterval:
