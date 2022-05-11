@@ -11,8 +11,6 @@ from telegram import InlineKeyboardMarkup
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot import download_dict, download_dict_lock, STATUS_LIMIT, botStartTime, DOWNLOAD_DIR
 from bot.helper.telegram_helper.button_build import ButtonMaker
-from bot.helper.telegram_helper.message_utils import sendMessage, sendMarkup, delete_all_messages, update_all_messages
-
 
 MAGNET_REGEX = r"magnet:\?xt=urn:btih:[a-zA-Z0-9]*"
 
@@ -36,18 +34,6 @@ class MirrorStatus:
     STATUS_SEEDING = "Seeding...🌧"
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-
-class MirrorListener:
-    def __init__(self, bot, message, isZip=False, extract=False, isQbit=False, isLeech=False, pswd=None, tag=None):
-        self.bot = bot
-        self.message = message
-        self.uid = self.message.message_id
-        self.extract = extract
-        self.isZip = isZip
-        self.isQbit = isQbit
-        self.isLeech = isLeech
-        self.pswd = pswd
-        self.tag = tag
 
 
 class setInterval:
@@ -165,8 +151,9 @@ def get_readable_message():
                 try:
                     msg += f"\n<b>├─🌱 Sᴇᴇᴅᴇʀꜱ:</b> {download.torrent_info().num_seeds}" \
                            f" | <b>🧲 Lᴇᴇᴄʜᴇʀꜱ:</b> {download.torrent_info().num_leechs}"
-                msg += f"\n<b>├─❌ Tᴏ Sᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
-                msg += f"\n<b>╰─👾 User:</b>/{self.tag} {self.uid}"
+                except:
+                    pass
+                msg += f"\n<b>╰─🚨 Tᴏ Sᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>🪨 Size:</b>{download.size()}"
                 msg += f"\n<b>🏃 Sᴘᴇᴇᴅ:</b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
@@ -199,10 +186,10 @@ def get_readable_message():
         bmsg += f"\n<b>🌐 Rᴀᴍ:</b> {virtual_memory().percent}% | <b>🧭 Uᴘᴛɪᴍᴇ ::</b> {currentTime}" 
         bmsg += f"\n<b>🔻 DL:</b> {dlspeed}/s | <b>🔺 UL:</b> {upspeed}/s" 
         if STATUS_LIMIT is not None and tasks > STATUS_LIMIT:
-            msg += f"<b>📑 Pᴀɢᴇ:</b> {PAGE_NO}/{pages} | <b>📝 Tᴀꜱᴋꜱ:</b> {tasks}\n"
+            msg += f"<b>Page:</b> {PAGE_NO}/{pages} | <b>Tasks:</b> {tasks}\n"
             buttons = ButtonMaker()
-            buttons.sbutton("⬅️ ᴘʀᴇᴠɪᴏᴜs", "status pre")
-            buttons.sbutton("➡️ ɴᴇxᴛ", "status nex")
+            buttons.sbutton("⬅️Previous", "status pre")
+            buttons.sbutton("➡️Next", "status nex")
             button = InlineKeyboardMarkup(buttons.build_menu(2))
             return msg + bmsg, button
         return msg + bmsg, ""
