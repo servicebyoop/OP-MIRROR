@@ -101,7 +101,7 @@ class GoogleDriveHelper:
             regex = r"https://drive\.google\.com/(drive)?/?u?/?\d?/?(mobile)?/?(file)?(folders)?/?d?/([-\w]+)[?+]?/?(w+)?"
             res = search(regex,link)
             if res is None:
-                raise IndexError("𝐆𝐨𝐨𝐠𝐥𝐞 𝐃𝐫𝐢𝐯𝐞 𝐈𝐃 𝐜𝐨𝐮𝐥𝐝 𝐧𝐨𝐭 𝐛𝐞 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞𝐝 𝐥𝐢𝐧𝐤")
+                raise IndexError("G-Drive ID not found.")
             return res.group(5)
         parsed = urlparse(link)
         return parse_qs(parsed.query)['id'][0]
