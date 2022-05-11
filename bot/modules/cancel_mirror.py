@@ -36,11 +36,11 @@ def cancel_mirror(update, context):
         sendMessage(msg, context.bot, update.message)
         return
     if dl.status() == MirrorStatus.STATUS_ARCHIVING:
-        sendMessage("𝐀𝐫𝐜𝐡𝐢𝐯𝐚𝐥 𝐢𝐧 𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬, 𝐘𝐨𝐮 𝐂𝐚𝐧'𝐭 𝐂𝐚𝐧𝐜𝐞𝐥 𝐈𝐭.", context.bot, update.message)
+        sendMessage("Archival in Progress, You Can't Cancel It.", context.bot, update.message)
     elif dl.status() == MirrorStatus.STATUS_EXTRACTING:
-        sendMessage("𝐄𝐱𝐭𝐫𝐚𝐜𝐭 𝐢𝐧 𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬, 𝐘𝐨𝐮 𝐂𝐚𝐧'𝐭 𝐂𝐚𝐧𝐜𝐞𝐥 𝐈𝐭.", context.bot, update.message)
+        sendMessage("Extract in Progress, You Can't Cancel It.", context.bot, update.message)
     elif dl.status() == MirrorStatus.STATUS_SPLITTING:
-        sendMessage("𝐒𝐩𝐥𝐢𝐭 𝐢𝐧 𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬, 𝐘𝐨𝐮 𝐂𝐚𝐧'𝐭 𝐂𝐚𝐧𝐜𝐞𝐥 𝐈𝐭.", context.bot, update.message)
+        sendMessage("Split in Progress, You Can't Cancel It.", context.bot, update.message)
     else:
         dl.download().cancel_download()
 
@@ -77,7 +77,7 @@ def cancel_all_update(update, context):
         query.message.delete()
         cancel_all(data[1])
     else:
-        query.answer(text="𝐘𝐨𝐮 𝐝𝐨𝐧'𝐭 𝐡𝐚𝐯𝐞 𝐩𝐞𝐫𝐦𝐢𝐬𝐬𝐢𝐨𝐧 𝐭𝐨 𝐮𝐬𝐞 𝐭𝐡𝐞𝐬𝐞 𝐛𝐮𝐭𝐭𝐨𝐧𝐬!", show_alert=True)
+        query.answer(text="You don't have permission to use these buttons!", show_alert=True)
 
 
 

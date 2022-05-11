@@ -52,27 +52,27 @@ def torser(update, context):
     key = update.message.text.split(" ", maxsplit=1)
     buttons = button_build.ButtonMaker()
     if SEARCH_API_LINK is  None and SEARCH_PLUGINS is None:
-        sendMessage("𝐍𝐨 𝐀𝐏𝐈 𝐥𝐢𝐧𝐤 𝐨𝐫 𝐬𝐞𝐚𝐫𝐜𝐡 𝐏𝐋𝐔𝐆𝐈𝐍𝐒 𝐚𝐝𝐝𝐞𝐝 𝐟𝐨𝐫 𝐭𝐡𝐢𝐬 𝐟𝐮𝐧𝐜𝐭𝐢𝐨𝐧", context.bot, update.message)
+        sendMessage("No API link or search PLUGINS added for this function", context.bot, update.message)
     elif len(key) == 1 and SEARCH_API_LINK is None:
-        sendMessage("𝐒𝐞𝐧𝐝 𝐚 𝐬𝐞𝐚𝐫𝐜𝐡 𝐤𝐞𝐲 𝐚𝐥𝐨𝐧𝐠 𝐰𝐢𝐭𝐡 𝐜𝐨𝐦𝐦𝐚𝐧𝐝", context.bot, update.message)
+        sendMessage("Send a search key along with command", context.bot, update.message)
     elif len(key) == 1:
-        buttons.sbutton('𝐓𝐫𝐞𝐧𝐝𝐢𝐧𝐠', f"torser {user_id} apitrend")
-        buttons.sbutton('𝐑𝐞𝐜𝐞𝐧𝐭', f"torser {user_id} apirecent")
-        buttons.sbutton("𝐂𝐚𝐧𝐜𝐞𝐥", f"torser {user_id} cancel")
+        buttons.sbutton('Trending', f"torser {user_id} apitrend")
+        buttons.sbutton('Recent', f"torser {user_id} apirecent")
+        buttons.sbutton("Cancel", f"torser {user_id} cancel")
         button = InlineKeyboardMarkup(buttons.build_menu(2))
-        sendMarkup("𝐒𝐞𝐧𝐝 𝐚 𝐬𝐞𝐚𝐫𝐜𝐡 𝐤𝐞𝐲 𝐚𝐥𝐨𝐧𝐠 𝐰𝐢𝐭𝐡 𝐜𝐨𝐦𝐦𝐚𝐧𝐝", context.bot, update.message, button)
+        sendMarkup("Send a search key along with command", context.bot, update.message, button)
     elif SEARCH_API_LINK is not None and SEARCH_PLUGINS is not None:
-        buttons.sbutton('𝐀𝐩𝐢', f"torser {user_id} apisearch")
-        buttons.sbutton('𝐏𝐥𝐮𝐠𝐢𝐧𝐬', f"torser {user_id} plugin")
-        buttons.sbutton("𝐂𝐚𝐧𝐜𝐞𝐥", f"torser {user_id} cancel")
+        buttons.sbutton('Api', f"torser {user_id} apisearch")
+        buttons.sbutton('Plugins', f"torser {user_id} plugin")
+        buttons.sbutton("Cancel", f"torser {user_id} cancel")
         button = InlineKeyboardMarkup(buttons.build_menu(2))
-        sendMarkup('𝐂𝐡𝐨𝐨𝐬𝐞 𝐭𝐨𝐨𝐥 𝐭𝐨 𝐬𝐞𝐚𝐫𝐜𝐡:', context.bot, update.message, button)
+        sendMarkup('Choose tool to search:', context.bot, update.message, button)
     elif SEARCH_API_LINK is not None and SEARCH_PLUGINS is None:
         button = _api_buttons(user_id, "apisearch")
-        sendMarkup('𝐂𝐡𝐨𝐨𝐬𝐞 𝐬𝐢𝐭𝐞 𝐭𝐨 𝐬𝐞𝐚𝐫𝐜𝐡:', context.bot, update.message, button)
+        sendMarkup('Choose site to search:', context.bot, update.message, button)
     elif SEARCH_API_LINK is None and SEARCH_PLUGINS is not None:
         button = _plugin_buttons(user_id)
-        sendMarkup('𝐂𝐡𝐨𝐨𝐬𝐞 𝐬𝐢𝐭𝐞 𝐭𝐨 𝐬𝐞𝐚𝐫𝐜𝐡:', context.bot, update.message, button)
+        sendMarkup('Choose site to search:', context.bot, update.message, button)
 
 def torserbut(update, context):
     query = update.callback_query
@@ -86,15 +86,15 @@ def torserbut(update, context):
     data = query.data
     data = data.split(" ")
     if user_id != int(data[1]):
-        query.answer(text="𝐇𝐞𝐲 𝐍𝐨𝐭 𝐘𝐨𝐮𝐫𝐬!", show_alert=True)
+        query.answer(text="Not Yours!", show_alert=True)
     elif data[2].startswith('api'):
         query.answer()
         button = _api_buttons(user_id, data[2])
-        editMessage('𝐂𝐡𝐨𝐨𝐬𝐞 𝐬𝐢𝐭𝐞:', message, button)
+        editMessage('Choose site:', message, button)
     elif data[2] == 'plugin':
         query.answer()
         button = _plugin_buttons(user_id)
-        editMessage('𝐂𝐡𝐨𝐨𝐬𝐞 𝐬𝐢𝐭𝐞:', message, button)
+        editMessage('Choose site:', message, button)
     elif data[2] != "cancel":
         query.answer()
         site = data[2]
@@ -107,13 +107,13 @@ def torserbut(update, context):
                     endpoint = 'Recent'
                 editMessage(f"<b>Listing {endpoint} Items...\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
             else:
-                editMessage(f"<b>𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭 𝐈𝐭 𝐦𝐚𝐲 𝐭𝐚𝐤𝐞 𝟑-𝟒 𝐦𝐢𝐧𝐮𝐭𝐞𝐬 𝐭𝐨 𝐟𝐢𝐧𝐝 𝐭𝐡𝐞 <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
+                editMessage(f"<b>Please wait It may take 3-4 minutes to find the <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
         else:
-            editMessage(f"<b>𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭 𝐈𝐭 𝐦𝐚𝐲 𝐭𝐚𝐤𝐞 𝟑-𝟒 𝐦𝐢𝐧𝐮𝐭𝐞𝐬 𝐭𝐨 𝐟𝐢𝐧𝐝 𝐭𝐡𝐞 <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>", message)
+            editMessage(f"<b>Please wait It may take 3-4 minutes to find the <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>", message)
         Thread(target=_search, args=(key, site, message, method)).start()
     else:
         query.answer()
-        editMessage("𝐎𝐨𝐩𝐬 💻 𝐒𝐞𝐚𝐫𝐜𝐡 𝐡𝐚𝐬 𝐛𝐞𝐞𝐧 𝐜𝐚𝐧𝐜𝐞𝐥𝐞𝐝! ❌", message)
+        editMessage("Search has been canceled!", message)
 
 def _search(key, site, message, method):
     if method.startswith('api'):
@@ -148,7 +148,7 @@ def _search(key, site, message, method):
                     msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>"
                 search_results = search_results['data']
             else:
-                return editMessage(f"𝐍𝐨 𝐫𝐞𝐬𝐮𝐥𝐭 𝐟𝐨𝐮𝐧𝐝 𝐟𝐨𝐫 <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i>", message)
+                return editMessage(f"No result found for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i>", message)
         except Exception as e:
             return editMessage(str(e), message)
     else:
@@ -168,10 +168,10 @@ def _search(key, site, message, method):
             msg = f"<b>Found {min(total_results, TELEGRAPH_LIMIT)}</b>"
             msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>"
         else:
-            return editMessage(f"𝐍𝐨 𝐫𝐞𝐬𝐮𝐥𝐭 𝐟𝐨𝐮𝐧𝐝 𝐟𝐨𝐫 <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i>", message)
+            return editMessage(f"No result found for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i>", message)
     link = _getResult(search_results, key, message, method)
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("🔎 𝐕𝐈𝐄𝐖", link)
+    buttons.buildbutton("🔎 VIEW", link)
     button = InlineKeyboardMarkup(buttons.build_menu(1))
     editMessage(msg, message, button)
     if not method.startswith('api'):
@@ -233,7 +233,7 @@ def _getResult(search_results, key, message, method):
 
     editMessage(f"<b>Creating</b> {len(telegraph_content)} <b>Telegraph pages.</b>", message)
     path = [telegraph.create_page(
-                title='OP-Mirror Torrent Search',
+                title='Mirror-leech-bot Torrent Search',
                 content=content
             )["path"] for content in telegraph_content]
     sleep(0.5)
