@@ -133,7 +133,7 @@ listeners = []
 
 def add_mega_download(mega_link: str, path: str, listener):
     executor = AsyncExecutor()
-    api = MegaApi(MEGA_API_KEY, None, None, 'servicebyoop-op-mirror-tgbot')
+    api = MegaApi(MEGA_API_KEY, None, None, 'mirror-leech-telegram-bot')
     mega_listener = MegaAppListener(executor.continue_event, listener)
     global listeners
     api.addListener(mega_listener)
