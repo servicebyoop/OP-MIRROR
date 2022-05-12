@@ -43,7 +43,19 @@ class setInterval:
         self.stopEvent = Event()
         thread = Thread(target=self.__setInterval)
         thread.start()
-
+    
+class MirrorListener:
+    def __init__(self, bot, message, isZip=False, extract=False, isQbit=False, isLeech=False, pswd=None, tag=None):
+        self.bot = bot
+        self.message = message
+        self.uid = self.message.message_id
+        self.extract = extract
+        self.isZip = isZip
+        self.isQbit = isQbit
+        self.isLeech = isLeech
+        self.pswd = pswd
+        self.tag = tag
+        
     def __setInterval(self):
         nextTime = time() + self.interval
         while not self.stopEvent.wait(nextTime - time()):
