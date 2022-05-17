@@ -20,5 +20,3 @@ if PORT is not None and BASE_URL is not None:
             logerror(f"alive.py: {e}")
             sleep(2)
             continue
-# credit-repo-> opgohil telegram chennel
-# join - https://t.me/gdriveop

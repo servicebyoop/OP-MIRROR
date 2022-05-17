@@ -75,5 +75,3 @@ print('Complete.')
 hours, rem = divmod((time.time() - stt), 3600)
 minutes, sec = divmod(rem, 60)
 print("Elapsed Time:\n{:0>2}:{:0>2}:{:05.2f}".format(int(hours), int(minutes), sec))
-# credit-repo-> opgohil telegram chennel
-# join - https://t.me/gdriveop
