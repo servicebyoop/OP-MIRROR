@@ -45,3 +45,6 @@ with open('drive_folder', 'w') as file:
     file.truncate(0)
     file.write(msg)
 print("\n\n    Done!")
+
+#creditrepo-opgohil telegram chennel
+#join - https://t.me/gdriveop
