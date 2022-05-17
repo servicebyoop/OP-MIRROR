@@ -192,7 +192,7 @@ class MirrorListener:
             msg += f'\n<b>Total Files: </b>{count}'
             if typ != 0:
                 msg += f'\n<b>Corrupted Files: </b>{typ}'
-            msg += f'\n<b>cc: </b>{self.tag}\n\n'
+            msg += f'\n<b>ᴜsᴇʀ 😶‍🌫️: </b>{self.tag}\n\n'
             if self.message.chat.type == 'private':
                 sendMessage(msg, self.bot, self.message)
             else:
