@@ -1,4 +1,4 @@
-FROM servicebyoop/mltb:latest
+FROM anasty17/mltb:latest
 # FROM anasty17/mltb-oracle:latest
 
 WORKDIR /usr/src/app
