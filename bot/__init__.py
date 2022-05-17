@@ -1,5 +1,3 @@
-# credit-repo-> opgohil telegram chennel
-# join - https://t.me/gdriveop
 import logging
 import socket
 import faulthandler
