@@ -1,4 +1,3 @@
-import requests
 from re import match, findall
 from threading import Thread, Event
 from time import time
@@ -36,17 +35,6 @@ class MirrorStatus:
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
-class MirrorListener:
-    def __init__(self, bot, message, isZip=False, extract=False, isQbit=False, isLeech=False, pswd=None, tag=None):
-        self.bot = bot
-        self.message = message
-        self.uid = self.message.message_id
-        self.extract = extract
-        self.isZip = isZip
-        self.isQbit = isQbit
-        self.isLeech = isLeech
-        self.pswd = pswd
-        self.tag = tag
 
 class setInterval:
     def __init__(self, interval, action):
@@ -55,7 +43,6 @@ class setInterval:
         self.stopEvent = Event()
         thread = Thread(target=self.__setInterval)
         thread.start()
-    
 
     def __setInterval(self):
         nextTime = time() + self.interval
@@ -167,7 +154,6 @@ def get_readable_message():
                 except:
                     pass
                 msg += f"\n<b>╰─🚨 Tᴏ Sᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
-                msg += f'\n\n<b>User 🕴️: </b>{self.tag} {self.uid}'
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>🪨 Size:</b>{download.size()}"
                 msg += f"\n<b>🏃 Sᴘᴇᴇᴅ:</b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
@@ -202,8 +188,8 @@ def get_readable_message():
         if STATUS_LIMIT is not None and tasks > STATUS_LIMIT:
             msg += f"<b>Page:</b> {PAGE_NO}/{pages} | <b>Tasks:</b> {tasks}\n"
             buttons = ButtonMaker()
-            buttons.sbutton("⬅️ Previous", "status pre")
-            buttons.sbutton("➡️ Next", "status nex")
+            buttons.sbutton("⬅️Previous", "status pre")
+            buttons.sbutton("➡️Next", "status nex")
             button = InlineKeyboardMarkup(buttons.build_menu(2))
             return msg + bmsg, button
         return msg + bmsg, ""
