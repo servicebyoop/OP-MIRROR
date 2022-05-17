@@ -60,15 +60,16 @@ def stats(update, context):
             f'<b>├  📁 ᴍᴇᴍᴏʀʏ ᴛᴏᴛᴀʟ:</b> {mem_t}\n'\
             f'<b>├  ⏳ ᴍᴇᴍᴏʀʏ ғʀᴇᴇ:</b> {mem_a}\n'\
             f'<b>╰─ 📥 ᴍᴇᴍᴏʀʏ ᴜsᴇᴅ:</b> {mem_u}\n'
-            
+            #edited by - @gujjuopgohil
     sendMessage(stats, context.bot, update.message)
 
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("JOIN HERE", "https://t.me/gdriveop")
-    buttons.buildbutton("Report Group", "https://t.me/opgohilmirr")
-    reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
+    buttons.buildbutton("𝐉𝐎𝐈𝐍 𝐇𝐄𝐑𝐄", "https://t.me/+Uq-IOKoOyAszNjg1")
+    buttons.buildbutton("𝐑𝐞𝐩𝐨𝐫𝐭 𝐆𝐫𝐨𝐮𝐩", "https://t.me/opgohilmirr")
+    buttons.buildbutton("𝐁𝐨𝐭-𝐑𝐞𝐩𝐨𝐬𝐢𝐭𝐨𝐫𝐲", "https://github.com/servicebyoop/OP-MIRROR")
+    reply_markup = InlineKeyboardMarkup(buttons.build_menu(3))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
 This bot can mirror all your links to Google Drive!
