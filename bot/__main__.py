@@ -42,34 +42,30 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>╭──《🌐 Bᴏᴛ Sᴛᴀᴛɪsᴛɪᴄs 🌐》</b>\n' \
-            f'<b>│</b>\n' \
-            f'<b>├  ⚙️ ᴠᴇʀsɪᴏɴ:</b> {botVersion}\n\n'\
-            f'<b>├  ▶  Rᴜɴɴɪɴɢ Sɪɴᴄᴇ ▶:</b> {currentTime}\n'\
-            f'<b>├  ⛅ ᴏs ᴜᴘᴛɪᴍᴇ:</b> {osUptime}\n\n'\
-            f'<b>├  💾 Tᴏᴛᴀʟ Dɪsᴋ Sᴘᴀᴄᴇ:</b> {total}\n'\
-            f'<b>├  📀 Tᴏᴛᴀʟ Usᴇᴅ Sᴘᴀᴄᴇ:</b> {used} | <b>Free:</b> {free}\n\n'\
-            f'<b>├  🔼 Tᴏᴛᴀʟ Uᴘʟᴏᴀᴅ:</b> {sent}\n'\
-            f'<b>├  🔽 Tᴏᴛᴀʟ Dᴏᴡɴʟᴏᴀᴅ:</b> {recv}\n\n'\
-            f'<b>├  🖥️ Cᴘᴜ:</b> {cpuUsage}%\n'\
-            f'<b>├  🎮 Rᴀᴍ:</b> {mem_p}%\n'\
-            f'<b>├  💽 Dɪsᴋ:</b> {disk}%\n\n'\
-            f'<b>├  〰️ ᴘʜʏsɪᴄᴀʟ ᴄᴏʀᴇs:</b>{p_core}\n'\
-            f'<b>├  🧬 ᴛᴏᴛᴀʟ ᴄᴏʀᴇs:</b> {t_core}\n\n'\
-            f'<b>├  📼 sᴡᴀᴘ:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
-            f'<b>├  📁 ᴍᴇᴍᴏʀʏ ᴛᴏᴛᴀʟ:</b> {mem_t}\n'\
-            f'<b>├  ⏳ ᴍᴇᴍᴏʀʏ ғʀᴇᴇ:</b> {mem_a}\n'\
-            f'<b>╰─ 📥 ᴍᴇᴍᴏʀʏ ᴜsᴇᴅ:</b> {mem_u}\n'
-            #edited by - @gujjuopgohil
+    stats = f'<b>Version:</b> {botVersion}\n\n'\
+            f'<b>Bot Uptime:</b> {currentTime}\n'\
+            f'<b>OS Uptime:</b> {osUptime}\n\n'\
+            f'<b>Total Disk Space:</b> {total}\n'\
+            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
+            f'<b>Upload:</b> {sent}\n'\
+            f'<b>Download:</b> {recv}\n\n'\
+            f'<b>CPU:</b> {cpuUsage}%\n'\
+            f'<b>RAM:</b> {mem_p}%\n'\
+            f'<b>DISK:</b> {disk}%\n\n'\
+            f'<b>Physical Cores:</b> {p_core}\n'\
+            f'<b>Total Cores:</b> {t_core}\n\n'\
+            f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
+            f'<b>Memory Total:</b> {mem_t}\n'\
+            f'<b>Memory Free:</b> {mem_a}\n'\
+            f'<b>Memory Used:</b> {mem_u}\n'
     sendMessage(stats, context.bot, update.message)
 
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("𝐉𝐎𝐈𝐍 𝐇𝐄𝐑𝐄", "https://t.me/+Uq-IOKoOyAszNjg1")
-    buttons.buildbutton("𝐑𝐞𝐩𝐨𝐫𝐭 𝐆𝐫𝐨𝐮𝐩", "https://t.me/gdriveop")
-    buttons.buildbutton("𝐁𝐨𝐭-𝐑𝐞𝐩𝐨𝐬𝐢𝐭𝐨𝐫𝐲", "https://github.com/servicebyoop/OP-MIRROR")
-    reply_markup = InlineKeyboardMarkup(buttons.build_menu(3))
+    buttons.buildbutton("JOIN HERE", "https://t.me/gdriveop")
+    buttons.buildbutton("Report Group", "https://t.me/opgohilmirr")
+    reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
 This bot can mirror all your links to Google Drive!
@@ -80,7 +76,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         sendMarkup('Dont spam here join below 👇', context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("😐Restarting, Please wait❗...", context.bot, update.message)
+    restart_message = sendMessage("Restarting...", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
     alive.kill()
@@ -102,7 +98,7 @@ def restart(update, context):
 
 def ping(update, context):
     start_time = int(round(time() * 1000))
-    reply = sendMessage("⛔ Starting Ping", context.bot, update.message)
+    reply = sendMessage("Starting Ping", context.bot, update.message)
     end_time = int(round(time() * 1000))
     editMessage(f'{end_time - start_time} ms', reply)
 
@@ -253,7 +249,7 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("😎Restarted successfully❗", chat_id, msg_id)
+        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
         osremove(".restartmsg")
     elif AUTHORIZED_CHATS:
         try:
@@ -280,7 +276,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info("💥𝐁𝐨𝐭 𝐒𝐭𝐚𝐫𝐭𝐞𝐝❗Ja Gand mara")
+    LOGGER.info("Bot Started!")
     signal.signal(signal.SIGINT, exit_clean_up)
     if rss_session is not None:
         rss_session.start()
