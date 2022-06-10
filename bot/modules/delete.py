@@ -24,7 +24,7 @@ def deletefile(update, context):
         drive = gdriveTools.GoogleDriveHelper()
         msg = drive.deletefile(link)
     else:
-        msg = 'Send Gdrive link along with command or by replying to the link by command'
+        msg = '𝕊𝕖𝕟𝕕 𝔾𝕕𝕣𝕚𝕧𝕖 𝕝𝕚𝕟𝕜 𝕒𝕝𝕠𝕟𝕘 𝕨𝕚𝕥𝕙 𝕔𝕠𝕞𝕞𝕒𝕟𝕕 𝕠𝕣 𝕓𝕪 𝕣𝕖𝕡𝕝𝕪𝕚𝕟𝕘 𝕥𝕠 𝕥𝕙𝕖 𝕝𝕚𝕟𝕜 𝕓𝕪 𝕔𝕠𝕞𝕞𝕒𝕟𝕕'
     reply_message = sendMessage(msg, context.bot, update.message)
     Thread(target=auto_delete_message, args=(context.bot, update.message, reply_message)).start()
 
