@@ -112,18 +112,18 @@ class GoogleDriveHelper:
         try:
             file_id = self.__getIdFromUrl(link)
         except (KeyError, IndexError):
-            msg = "Google Drive ID could not be found in the provided link"
+            msg = "📛 𝐆𝐨𝐨𝐠𝐥𝐞 𝐃𝐫𝐢𝐯𝐞 𝐈𝐃 𝐜𝐨𝐮𝐥𝐝 𝐧𝐨𝐭 𝐛𝐞 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞𝐝 𝐥𝐢𝐧𝐤"
             return msg
         msg = ''
         try:
             self.__service.files().delete(fileId=file_id, supportsTeamDrives=IS_TEAM_DRIVE).execute()
-            msg = "Successfully deleted"
+            msg = "𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐝𝐞𝐥𝐞𝐭𝐞𝐝"
             LOGGER.info(f"Delete Result: {msg}")
         except HttpError as err:
             if "File not found" in str(err):
-                msg = "No such file exist"
+                msg = "𝐍𝐨 𝐬𝐮𝐜𝐡 𝐟𝐢𝐥𝐞 𝐞𝐱𝐢𝐬𝐭"
             elif "insufficientFilePermissions" in str(err):
-                msg = "Insufficient File Permissions"
+                msg = "𝐈𝐧𝐬𝐮𝐟𝐟𝐢𝐜𝐢𝐞𝐧𝐭 𝐅𝐢𝐥𝐞 𝐏𝐞𝐫𝐦𝐢𝐬𝐬𝐢𝐨𝐧𝐬"
                 token_service = self.__alt_authorize()
                 if token_service is not None:
                     self.__service = token_service
@@ -162,7 +162,7 @@ class GoogleDriveHelper:
         # File body description
         file_metadata = {
             'name': file_name,
-            'description': 'Uploaded by Mirror-leech-telegram-bot',
+            'description': '💮 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐁𝐲 𝐎𝐏-𝐌𝐈𝐑𝐑𝐎𝐑 𝐭𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐛𝐨𝐭',
             'mimeType': mime_type,
         }
         if parent_id is not None:
@@ -336,7 +336,7 @@ class GoogleDriveHelper:
         try:
             file_id = self.__getIdFromUrl(link)
         except (KeyError, IndexError):
-            msg = "Google Drive ID could not be found in the provided link"
+            msg = "📛 𝐆𝐨𝐨𝐠𝐥𝐞 𝐃𝐫𝐢𝐯𝐞 𝐈𝐃 𝐜𝐨𝐮𝐥𝐝 𝐧𝐨𝐭 𝐛𝐞 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞𝐝 𝐥𝐢𝐧𝐤"
             return msg
         msg = ""
         LOGGER.info(f"File ID: {file_id}")
@@ -351,11 +351,11 @@ class GoogleDriveHelper:
                     LOGGER.info("Deleting cloned data from Drive...")
                     self.deletefile(durl)
                     return "your clone has been stopped and cloned data has been deleted!", "cancelled"
-                msg += f'<b>Name: </b><code>{meta.get("name")}</code>'
-                msg += f'\n\n<b>Size: </b>{get_readable_file_size(self.transferred_size)}'
-                msg += '\n\n<b>Type: </b>Folder'
-                msg += f'\n<b>SubFolders: </b>{self.__total_folders}'
-                msg += f'\n<b>Files: </b>{self.__total_files}'
+                msg += f'<b>╭─🗂️ Fɪʟᴇɴᴀᴍᴇ: </b><code>{meta.get("name")}</code>'
+                msg += f'\n\n<b>├─📦 Sɪᴢᴇ: </b>{get_readable_file_size(self.transferred_size)}'
+                msg += '\n\n<b>├─⚙️ Tʏᴘᴇ: </b>Folder'
+                msg += f'\n<b>├─📚 Sᴜʙꜰᴏʟᴅᴇʀꜱ: </b>{self.__total_folders}'
+                msg += f'\n<b>╰─📁 Fɪʟᴇꜱ: </b>{self.__total_files}'
                 buttons = ButtonMaker()
                 buttons.buildbutton("☁️ Drive Link", durl)
                 if INDEX_URL is not None:
@@ -364,14 +364,14 @@ class GoogleDriveHelper:
                     buttons.buildbutton("⚡ Index Link", url)
             else:
                 file = self.__copyFile(meta.get('id'), parent_id)
-                msg += f'<b>Name: </b><code>{file.get("name")}</code>'
+                msg += f'<b>╭─🗂️ Fɪʟᴇɴᴀᴍᴇ: </b><code>{file.get("name")}</code>'
                 durl = self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))
                 buttons = ButtonMaker()
                 buttons.buildbutton("☁️ Drive Link", durl)
                 if mime_type is None:
                     mime_type = 'File'
-                msg += f'\n\n<b>Size: </b>{get_readable_file_size(int(meta.get("size", 0)))}'
-                msg += f'\n\n<b>Type: </b>{mime_type}'
+                msg += f'\n\n<b>├─📦 Sɪᴢᴇ: </b>{get_readable_file_size(int(meta.get("size", 0)))}'
+                msg += f'\n\n<b>╰─⚙️ Tʏᴘᴇ: </b>{mime_type}'
                 if INDEX_URL is not None:
                     url_path = rquote(f'{file.get("name")}', safe='')
                     url = f'{INDEX_URL}/{url_path}'
@@ -386,13 +386,13 @@ class GoogleDriveHelper:
             err = str(err).replace('>', '').replace('<', '')
             LOGGER.error(err)
             if "User rate limit exceeded" in str(err):
-                msg = "User rate limit exceeded."
+                msg = "😑 𝐔𝐬𝐞𝐫 𝐑𝐚𝐭𝐞 𝐋𝐢𝐦𝐢𝐭 𝐄𝐱𝐜𝐞𝐞𝐝𝐞𝐝, 𝐎𝐧𝐜𝐞 𝐂𝐡𝐞𝐜𝐤 𝐮𝐫 𝐋𝐢𝐧𝐤 𝐅𝐢𝐫𝐬𝐭."
             elif "File not found" in str(err):
                 token_service = self.__alt_authorize()
                 if token_service is not None:
                     self.__service = token_service
                     return self.clone(link)
-                msg = "File not found."
+                msg = "𝐍𝐨 𝐑𝐞𝐬𝐮𝐥𝐭 𝐅𝐨𝐮𝐧𝐝 ❌."
             else:
                 msg = f"Error.\n{err}"
             return msg, ""
@@ -421,7 +421,7 @@ class GoogleDriveHelper:
     def __create_directory(self, directory_name, parent_id):
         file_metadata = {
             "name": directory_name,
-            "description": "Uploaded by Mirror-leech-telegram-bot",
+            "description": "💮 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐁𝐲 𝐎𝐏-𝐌𝐈𝐑𝐑𝐎𝐑 𝐭𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐛𝐨𝐭",
             "mimeType": self.__G_DRIVE_DIR_MIME_TYPE
         }
         if parent_id is not None:
@@ -661,7 +661,7 @@ class GoogleDriveHelper:
         for content in telegraph_content:
             path.append(
                 telegraph.create_page(
-                    title='Mirror-Leech-Bot Drive Search',
+                    title='💞 𝐎𝐏-𝐌𝐈𝐑𝐑𝐎𝐑 𝐭𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐛𝐨𝐭 𝐒𝐞𝐚𝐫𝐜𝐡',
                     content=content
                 )["path"]
             )
@@ -678,7 +678,7 @@ class GoogleDriveHelper:
         try:
             file_id = self.__getIdFromUrl(link)
         except (KeyError, IndexError):
-            msg = "Google Drive ID could not be found in the provided link"
+            msg = "📛 𝐆𝐨𝐨𝐠𝐥𝐞 𝐃𝐫𝐢𝐯𝐞 𝐈𝐃 𝐜𝐨𝐮𝐥𝐝 𝐧𝐨𝐭 𝐛𝐞 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞𝐝 𝐥𝐢𝐧𝐤"
             return msg
         msg = ""
         LOGGER.info(f"File ID: {file_id}")
@@ -745,7 +745,7 @@ class GoogleDriveHelper:
         try:
             file_id = self.__getIdFromUrl(link)
         except (KeyError, IndexError):
-            msg = "Google Drive ID could not be found in the provided link"
+            msg = "📛 𝐆𝐨𝐨𝐠𝐥𝐞 𝐃𝐫𝐢𝐯𝐞 𝐈𝐃 𝐜𝐨𝐮𝐥𝐝 𝐧𝐨𝐭 𝐛𝐞 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞𝐝 𝐥𝐢𝐧𝐤"
             return msg, "", "", ""
         LOGGER.info(f"File ID: {file_id}")
         try:
