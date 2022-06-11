@@ -156,6 +156,7 @@ def get_readable_message():
                 msg += f"\n<b>├─🕹️ Ratio: </b>{round(download.torrent_info().ratio, 3)}"
                 msg += f" | <b>├─⚙️ Time: </b>{get_readable_time(download.torrent_info().seeding_time)}"
                 msg += f"\n<b>╰─🛑 TᴏSᴛᴏᴘ:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f'\n\n<b>𝐆𝐑𝐎𝐏 𝐔𝐒𝐄𝐑: </b>{self.tag}
             else:
                 msg += f"\n<b>❗Size: </b>{download.size()}"
             msg += "\n\n"
