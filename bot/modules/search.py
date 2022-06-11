@@ -44,7 +44,7 @@ SITES = {
     "all": "All"
 }
 
-TELEGRAPH_LIMIT = 300
+TELEGRAPH_LIMIT = 500
 
 
 def torser(update, context):
@@ -52,15 +52,15 @@ def torser(update, context):
     key = update.message.text.split(" ", maxsplit=1)
     buttons = button_build.ButtonMaker()
     if SEARCH_API_LINK is  None and SEARCH_PLUGINS is None:
-        sendMessage("No API link or search PLUGINS added for this function", context.bot, update.message)
+        sendMessage("ɴᴏ ᴀᴘɪ ʟɪɴᴋ ᴏʀ sᴇᴀʀᴄʜ ᴘʟᴜɢɪɴs ᴀᴅᴅᴇᴅ ғᴏʀ ᴛʜɪs ғᴜɴᴄᴛɪᴏɴ", context.bot, update.message)
     elif len(key) == 1 and SEARCH_API_LINK is None:
-        sendMessage("Send a search key along with command", context.bot, update.message)
+        sendMessage("𝚂𝚎𝚗𝚍 𝚊 𝚜𝚎𝚊𝚛𝚌𝚑 𝚔𝚎𝚢 𝚊𝚕𝚘𝚗𝚐 𝚠𝚒𝚝𝚑 𝚌𝚘𝚖𝚖𝚊𝚗𝚍", context.bot, update.message)
     elif len(key) == 1:
         buttons.sbutton('Trending', f"torser {user_id} apitrend")
         buttons.sbutton('Recent', f"torser {user_id} apirecent")
         buttons.sbutton("Cancel", f"torser {user_id} cancel")
         button = InlineKeyboardMarkup(buttons.build_menu(2))
-        sendMarkup("Send a search key along with command", context.bot, update.message, button)
+        sendMarkup("𝚂𝚎𝚗𝚍 𝚊 𝚜𝚎𝚊𝚛𝚌𝚑 𝚔𝚎𝚢 𝚊𝚕𝚘𝚗𝚐 𝚠𝚒𝚝𝚑 𝚌𝚘𝚖𝚖𝚊𝚗𝚍", context.bot, update.message, button)
     elif SEARCH_API_LINK is not None and SEARCH_PLUGINS is not None:
         buttons.sbutton('Api', f"torser {user_id} apisearch")
         buttons.sbutton('Plugins', f"torser {user_id} plugin")
@@ -86,15 +86,15 @@ def torserbut(update, context):
     data = query.data
     data = data.split(" ")
     if user_id != int(data[1]):
-        query.answer(text="Not Yours!", show_alert=True)
+        query.answer(text="𝐍𝐨𝐭 𝐘𝐨𝐮𝐫𝐬!", show_alert=True)
     elif data[2].startswith('api'):
         query.answer()
         button = _api_buttons(user_id, data[2])
-        editMessage('Choose site:', message, button)
+        editMessage('𝐂𝐡𝐨𝐨𝐬𝐞 𝐨𝐫 𝐬𝐞𝐥𝐞𝐜𝐭 𝐬𝐢𝐭𝐞:', message, button)
     elif data[2] == 'plugin':
         query.answer()
         button = _plugin_buttons(user_id)
-        editMessage('Choose site:', message, button)
+        editMessage('𝐂𝐡𝐨𝐨𝐬𝐞 𝐨𝐫 𝐬𝐞𝐥𝐞𝐜𝐭 𝐬𝐢𝐭𝐞:', message, button)
     elif data[2] != "cancel":
         query.answer()
         site = data[2]
@@ -113,7 +113,7 @@ def torserbut(update, context):
         Thread(target=_search, args=(key, site, message, method)).start()
     else:
         query.answer()
-        editMessage("Search has been canceled!", message)
+        editMessage("𝐒𝐞𝐚𝐫𝐜𝐡 𝐡𝐚𝐬 𝐛𝐞𝐞𝐧 𝐜𝐚𝐧𝐜𝐞𝐥𝐞𝐝!", message)
 
 def _search(key, site, message, method):
     if method.startswith('api'):
@@ -169,7 +169,7 @@ def _search(key, site, message, method):
         msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>"
     link = _getResult(search_results, key, message, method)
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("🔎 VIEW", link)
+    buttons.buildbutton("🔎 𝐕𝐈𝐄𝐖", link)
     button = InlineKeyboardMarkup(buttons.build_menu(1))
     editMessage(msg, message, button)
     if not method.startswith('api'):
@@ -191,14 +191,14 @@ def _getResult(search_results, key, message, method):
                 msg += f"<code><a href='{result['url']}'>{escape(result['name'])}</a></code><br>"
             if 'torrents' in result.keys():
                 for subres in result['torrents']:
-                    msg += f"<b>Quality: </b>{subres['quality']} | <b>Type: </b>{subres['type']} | <b>Size: </b>{subres['size']}<br>"
+                    msg += f"<b>𝐐𝐮𝐚𝐥𝐢𝐭𝐲: </b>{subres['quality']} | <b>Type: </b>{subres['type']} | <b>Size: </b>{subres['size']}<br>"
                     if 'torrent' in subres.keys():
                         msg += f"<a href='{subres['torrent']}'>Direct Link</a><br>"
                     elif 'magnet' in subres.keys():
-                        msg += f"<b>Share Magnet to</b> <a href='http://t.me/share/url?url={subres['magnet']}'>Telegram</a><br>"
+                        msg += f"<b>🇸‌🇭‌🇦‌🇷‌🇪‌ 🇲‌🇦‌🇬‌🇳‌🇪‌🇹‌ to</b> <a href='http://t.me/share/url?url={subres['magnet']}'>Telegram</a><br>"
                 msg += '<br>'
             else:
-                msg += f"<b>Size: </b>{result['size']}<br>"
+                msg += f"<b>𝐒𝐢𝐳𝐞: </b>{result['size']}<br>"
                 try:
                     msg += f"<b>Seeders: </b>{result['seeders']} | <b>Leechers: </b>{result['leechers']}<br>"
                 except:
@@ -206,14 +206,14 @@ def _getResult(search_results, key, message, method):
                 if 'torrent' in result.keys():
                     msg += f"<a href='{result['torrent']}'>Direct Link</a><br><br>"
                 elif 'magnet' in result.keys():
-                    msg += f"<b>Share Magnet to</b> <a href='http://t.me/share/url?url={quote(result['magnet'])}'>Telegram</a><br><br>"
+                    msg += f"<b>🇸‌🇭‌🇦‌🇷‌🇪‌ 🇲‌🇦‌🇬‌🇳‌🇪‌🇹‌ to</b> <a href='http://t.me/share/url?url={quote(result['magnet'])}'>Telegram</a><br><br>"
         else:
             msg += f"<a href='{result.descrLink}'>{escape(result.fileName)}</a><br>"
-            msg += f"<b>Size: </b>{get_readable_file_size(result.fileSize)}<br>"
+            msg += f"<b>𝐒𝐢𝐳𝐞: </b>{get_readable_file_size(result.fileSize)}<br>"
             msg += f"<b>Seeders: </b>{result.nbSeeders} | <b>Leechers: </b>{result.nbLeechers}<br>"
             link = result.fileUrl
             if link.startswith('magnet:'):
-                msg += f"<b>Share Magnet to</b> <a href='http://t.me/share/url?url={quote(link)}'>Telegram</a><br><br>"
+                msg += f"<b>🇸‌🇭‌🇦‌🇷‌🇪‌ 🇲‌🇦‌🇬‌🇳‌🇪‌🇹‌ to</b> <a href='http://t.me/share/url?url={quote(link)}'>Telegram</a><br><br>"
             else:
                 msg += f"<a href='{link}'>Direct Link</a><br><br>"
 
@@ -229,7 +229,7 @@ def _getResult(search_results, key, message, method):
 
     editMessage(f"<b>Creating</b> {len(telegraph_content)} <b>Telegraph pages.</b>", message)
     path = [telegraph.create_page(
-                title='Mirror-leech-bot Torrent Search',
+                title='👨‍🦱𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐔𝐬𝐢𝐧𝐠 𝐨𝐩𝐠𝐨𝐡𝐢𝐥-𝐆𝐝𝐫𝐢𝐯𝐞-𝐌𝐢𝐫𝐫𝐨𝐫𝐛𝐨𝐭',
                 content=content
             )["path"] for content in telegraph_content]
     sleep(0.5)
