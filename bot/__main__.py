@@ -65,17 +65,17 @@ def stats(update, context):
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Repo", "https://www.github.com/anasty17/mirror-leech-telegram-bot")
-    buttons.buildbutton("Report Group", "https://t.me/+PRRzqHd31XY3ZWZk")
+    buttons.buildbutton("sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ", "https://github.com/servicebyoop/OP-MIRROR")
+    buttons.buildbutton("𝚜𝚞𝚙𝚙𝚘𝚛𝚝", "https://t.me/opmirrorsupport")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot can mirror all your links to Google Drive!
+𝐓𝐡𝐢𝐬 𝐛𝐨𝐭 𝐜𝐚𝐧 𝐦𝐢𝐫𝐫𝐨𝐫 𝐚𝐥𝐥 𝐲𝐨𝐮𝐫 𝐥𝐢𝐧𝐤𝐬 𝐭𝐨 𝐆𝐨𝐨𝐠𝐥𝐞 𝐃𝐫𝐢𝐯𝐞!
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update.message, reply_markup)
+        sendMarkup('ʜᴇʏ ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴍʏ ᴄʀᴇᴀᴛᴇʀ\n ʙᴜᴛ ʏᴏᴜ ᴄᴇɴ ᴊᴏɪɴ ʜᴇʀᴇ', context.bot, update.message, reply_markup)
 
 def restart(update, context):
     restart_message = sendMessage("Restarting...", context.bot, update.message)
@@ -246,9 +246,9 @@ def main():
                 if ospath.isfile(".restartmsg"):
                     with open(".restartmsg") as f:
                         chat_id, msg_id = map(int, f)
-                    msg = 'Restarted successfully!'
+                    msg = 'ᴏᴘ-ᴍɪʀʀᴏʀ-ʙᴏᴛ ʀᴇsᴛᴀʀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ! 🎉'
                 else:
-                    msg = 'Bot Restarted!'
+                    msg = '𝐎𝐏-𝐌𝐈𝐑𝐑𝐎𝐑 🅱🅾🆃 ℛ𝑒𝓈𝓉𝒶𝓇𝓉𝑒𝒹 𝓈𝓊𝒸𝒸𝑒𝓈𝓈𝒻𝓊𝓁𝓁𝓎 '
                 for tag, links in data.items():
                      msg += f"\n\n{tag}: "
                      for index, link in enumerate(links, start=1):
