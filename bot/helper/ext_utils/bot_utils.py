@@ -35,7 +35,6 @@ class MirrorStatus:
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
-
 class setInterval:
     def __init__(self, interval, action):
         self.interval = interval
