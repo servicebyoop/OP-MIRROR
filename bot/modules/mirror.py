@@ -180,7 +180,7 @@ class MirrorListener:
             except Exception as e:
                 LOGGER.error(str(e))
             count = len(download_dict)
-        msg = f"{self.tag} your download has been stopped due to: {error}"
+        msg = f"{self.tag} ʏᴏᴜʀ ᴅᴏᴡɴʟᴏᴀᴅ ʜᴀᴤ ʙᴇᴇɴ ᴤᴛᴏᴘᴘᴇᴅ ᴅᴜᴇ ᴛᴏ: {error}"
         sendMessage(msg, self.bot, self.message)
         if count == 0:
             self.clean()
@@ -193,12 +193,12 @@ class MirrorListener:
     def onUploadComplete(self, link: str, size, files, folders, typ, name: str):
         if not self.isPrivate and INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
             DbManger().rm_complete_task(self.message.link)
-        msg = f"<b>Name: </b><code>{escape(name)}</code>\n\n<b>Size: </b>{size}"
+        msg = f"<b>╭─🗂️ Fɪʟᴇɴᴀᴍᴇ: </b><code>{escape(name)}</code>\n\n<b>Size: </b>{size}"
         if self.isLeech:
-            msg += f'\n<b>Total Files: </b>{folders}'
+            msg += f'\n<b>├─🗂️ T̲ᴏᴛᴀʟ Fɪʟᴇs: </b>{folders}'
             if typ != 0:
-                msg += f'\n<b>Corrupted Files: </b>{typ}'
-            msg += f'\n<b>cc: </b>{self.tag}\n\n'
+                msg += f'\n<b>╰─ᴄᴏʀʀᴜᴘᴛᴇᴅ ғɪɢʜᴛs: </b>{typ}'
+            msg += f'\n<b>├──* 𝐆𝐑𝐎𝐏 𝐔𝐒𝐄𝐑: </b>{self.tag}\n\n'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
@@ -212,11 +212,11 @@ class MirrorListener:
                 if fmsg != '':
                     sendMessage(msg + fmsg, self.bot, self.message)
         else:
-            msg += f'\n\n<b>Type: </b>{typ}'
+            msg += f'\n\n<b>⚙️ Tʏᴘᴇ: </b>{typ}'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
-                msg += f'\n<b>SubFolders: </b>{folders}'
-                msg += f'\n<b>Files: </b>{files}'
-            msg += f'\n\n<b>cc: </b>{self.tag}'
+                msg += f'\n<b>📚 Sᴜʙꜰᴏʟᴅᴇʀꜱ: </b>{folders}'
+                msg += f'\n<b>📁 Fɪʟᴇꜱ: </b>{files}'
+            msg += f'\n\n<b>├──* 𝐆𝐑𝐎𝐏 𝐔𝐒𝐄𝐑: </b>{self.tag}'
             buttons = ButtonMaker()
             buttons.buildbutton("☁️ Drive Link", link)
             LOGGER.info(f'Done Uploading {name}')
