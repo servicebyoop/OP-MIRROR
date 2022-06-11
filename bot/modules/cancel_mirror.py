@@ -27,13 +27,13 @@ def cancel_mirror(update, context):
             else:
                 dl = None
         if not dl:
-            return sendMessage("This is not an active task!", context.bot, update.message)
+            return sendMessage("𝐓𝐡𝐢𝐬 𝐢𝐬 𝐧𝐨𝐭 𝐚𝐧 𝐚𝐜𝐭𝐢𝐯𝐞 𝐭𝐚𝐬𝐤!", context.bot, update.message)
     elif len(args) == 1:
         msg = f"Reply to an active <code>/{BotCommands.MirrorCommand}</code> message which was used to start the download or send <code>/{BotCommands.CancelMirror} GID</code> to cancel it!"
         return sendMessage(msg, context.bot, update.message)
 
     if OWNER_ID != user_id and dl.message.from_user.id != user_id and user_id not in SUDO_USERS:
-        return sendMessage("This task is not for you!", context.bot, update.message)
+        return sendMessage("𝐓𝐡𝐢𝐬 𝐭𝐚𝐬𝐤 𝐢𝐬 𝐧𝐨𝐭 𝐟𝐨𝐫 𝐲𝐨𝐮 𝐛𝐚𝐛𝐲!", context.bot, update.message)
 
     if dl.status() == MirrorStatus.STATUS_ARCHIVING:
         sendMessage("Archival in Progress, You Can't Cancel It.", context.bot, update.message)
@@ -77,7 +77,7 @@ def cancel_all_update(update, context):
         query.message.delete()
         cancel_all(data[1])
     else:
-        query.answer(text="You don't have permission to use these buttons!", show_alert=True)
+        query.answer(text="ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴ ʙᴀʙʏ ᴛᴏ ᴜsᴇ ᴛʜᴇsᴇ ʙᴜᴛᴛᴏɴs!", show_alert=True)
 
 
 
