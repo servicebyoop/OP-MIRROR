@@ -198,7 +198,7 @@ class MirrorListener:
             msg += f'\n<b>├─🗂️ T̲ᴏᴛᴀʟ Fɪʟᴇs: </b>{folders}'
             if typ != 0:
                 msg += f'\n<b>╰─ᴄᴏʀʀᴜᴘᴛᴇᴅ ғɪɢʜᴛs: </b>{typ}'
-            msg += f'\n<b>├──* 𝐆𝐑𝐎𝐏 𝐔𝐒𝐄𝐑: </b>{self.tag}\n\n'
+            msg += f'\n<b>├──⫸ 𝐆𝐑𝐎𝐏 𝐔𝐒𝐄𝐑: </b>{self.tag}\n\n'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
@@ -216,7 +216,7 @@ class MirrorListener:
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
                 msg += f'\n<b>📚 Sᴜʙꜰᴏʟᴅᴇʀꜱ: </b>{folders}'
                 msg += f'\n<b>📁 Fɪʟᴇꜱ: </b>{files}'
-            msg += f'\n\n<b>├──* 𝐆𝐑𝐎𝐏 𝐔𝐒𝐄𝐑: </b>{self.tag}'
+            msg += f'\n\n<b>├──⫸ 𝐆𝐑𝐎𝐏 𝐔𝐒𝐄𝐑: </b>{self.tag}'
             buttons = ButtonMaker()
             buttons.buildbutton("☁️ Drive Link", link)
             LOGGER.info(f'Done Uploading {name}')
